@@ -1,0 +1,8 @@
+Revision history for Perl extension Text::Tabulate
+
+1.0 July 2007
+	- Turned into a module.
+
+0.5  2000s
+	- Initial creation as a utility script.
+
