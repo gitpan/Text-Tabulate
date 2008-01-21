@@ -46,7 +46,7 @@ use Carp;
 
 require Exporter;
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 @ISA = qw(Exporter);
 @EXPORT = qw( tabulate );
 @EXPORT_OK = ();
@@ -67,6 +67,7 @@ my %defaults = (
 	right	=> '',
 	bottom	=> '',
 	top	=> '',
+	joint	=> '',
 );
 
 =pod
@@ -197,6 +198,7 @@ sub format
 	my $ditto	= $self->{ditto};
 	my $bottom	= $self->{bottom};
 	my $top		= $self->{top};
+	my $joint	= $self->{joint};
 
 	# Repackage lines, split with eol regular expression
 	# remembering the end of line string.
@@ -392,7 +394,10 @@ sub format
 	}
 
 	# return final table.
-	@table;
+	return @table if (wantarray);
+
+	# combine the array into a single string.
+	join($joint, @table);
 }
 
 =pod
@@ -820,6 +825,15 @@ table. The default is nothing.
 
 This specifies the strings to be placed as a border on the right of the
 table. The default is nothing.
+
+=item joint
+
+This specifies the string used to join the rows of the table when the
+I<format> and I<tabulate> functions are called in a scalar context.
+This is most useful when the table input is split on newlines and
+a scaler return is required that includes newlines. Very similar to
+I<left> but depends on the context.
+The default is nothing.
 
 =back
 
