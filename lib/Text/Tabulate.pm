@@ -38,7 +38,7 @@ minimal width text table with each column aligned.
 
 package Text::Tabulate;
 
-use 5;
+use 5.006_001;
 use warnings;
 use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
@@ -46,7 +46,7 @@ use Carp;
 
 require Exporter;
 
-$VERSION = '1.1';
+$VERSION = '1.1.1';
 @ISA = qw(Exporter);
 @EXPORT = qw( tabulate );
 @EXPORT_OK = ();
